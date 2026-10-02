@@ -66,7 +66,8 @@ export default {
         }
 
         const rawMessage = interaction.options.getString('message');
-        const message = sanitizeInput(rawMessage, 2000);
+        const message = sanitizeInput(rawMessage, 2000)
+          .replace(/\\n/g, '\n');
 
         if (!message) {
             return replyUserError(interaction, {
